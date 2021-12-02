@@ -1,0 +1,28 @@
+#include <iostream>
+#include <vector>
+
+std::vector<std::string> func(std::vector<std::string>& s){
+    auto pall = [](std::string& s){
+        int i = 0, j = s.size() - 1;
+        while(i < j){
+            if(s[i] != s[j])
+                return false;
+            i++; j--;
+        }
+        return true;
+    };
+    std::vector<std::string> ans;
+    for(int i = 0; i < s.size(); ++i){
+        if(pall(s[i]))
+            ans.push_back(s[i]);
+    }
+    return ans;
+}
+
+int main(){
+    std::vector<std::string> s = {"abc", "abba", "abcba"};
+    std::vector<std::string> a = func(s);
+    for(int i = 0; i < a.size(); ++i){
+        std::cout << a[i] << " ";
+    }
+}
